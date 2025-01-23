@@ -108,6 +108,7 @@
             keysDown.splice(index, 1)
         }
 
+        /*Keeps track of the mouse movements and prints the current cordinates to the console*/
         function mousemove(e) {
             mousePosition.x = e.clientX;
             mousePosition.y = e.clientY;
@@ -117,6 +118,7 @@
 
         }
 
+        /*Keeps track if the mouse was up this frame as well as the mouse not being down currently down*/
         function mouseup(e){
             mouseUpThisFrame = true;
             mouseDown = false;
@@ -124,6 +126,7 @@
             console.log("Mouse Up")
         }
 
+        /*Keeps track if the mouse was down this frame as well as the mouse not being up currently down*/
         function mousedown(e){
             mouseDownThisFrame = true;
             mouseDown = true
