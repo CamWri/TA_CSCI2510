@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>A Game Loop-Based Game</title>
+
+    <!-- Let the canvas fill the whole browser window -->
+    <style>
+        * {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canv">
+    </canvas>
+
+    <script>
+        //The "model" of our game
+        let player1_X = 50
+        let player1_Y = 200
+
+        let player2_X = 500
+        let player2_Y = 200
+
+
+        let score = 0
+        let isOverlap = false;
+
+        //The state of the input
+        let keysDown = []
+
+        //The speed of the characters
+        let speed = 100
+
+        /**
+         * The game loop.
+         * The game loop calls update and draw using a timer
+         */
+        function gameLoop() {
+            update()
+            draw()
+        }
+
+        /**
+         * Update the model.
+         * Note that this function *only*
+         * changes the model. No drawing happens
+         */
+        function update() {
+            if (!isOverlap) {
+                /*Player One's Movement*/
+                if (keysDown.includes("ArrowLeft"))
+                    player1_X -= speed / fps
+                if (keysDown.includes("ArrowRight"))
+                    player1_X += speed / fps
+                if (keysDown.includes("ArrowUp"))
+                    player1_Y -= speed / fps
+                if (keysDown.includes("ArrowDown"))
+                    player1_Y += speed / fps
+
+                /*Player Two's Movement*/
+                if (keysDown.includes("KeyA"))
+                    player2_X -= speed / fps
+                if (keysDown.includes("KeyD"))
+                    player2_X += speed / fps
+                if (keysDown.includes("KeyW"))
+                    player2_Y -= speed / fps
+                if (keysDown.includes("KeyS"))
+                    player2_Y += speed / fps
+                
+                score++
+
+
+                /*First takes the difference between the two players X and Y Cordinates
+                * Ensures that value is positive by using Math.abs()
+                * If the difference between the X value and Y value is less than 5, then the centers overlap
+                */
+                if (Math.abs(player1_X - player2_X) < 5 && Math.abs(player1_Y - player2_Y) < 5) {
+                    isOverlap = true;
+                }
+            }
+        }
+
+        /**
+         * Draw the model.
+         * Note that we only *read* the model, we never change it
+         * This allows of separation of concerns
+         */
+        function draw() {
+            //Get the canvas element and its context
+            let canvas = document.querySelector("#canv")
+            let ctx = canvas.getContext("2d")
+
+            if (!isOverlap) {
+                //Clear the canvas
+                ctx.fillStyle = "lightgray"
+                ctx.beginPath()
+                ctx.rect(0, 0, canvas.width, canvas.height)
+                ctx.fill()
+
+                //Draw Player 1's circle with a green interior and purple outline
+                ctx.beginPath();
+                ctx.fillStyle = "green"
+                ctx.strokeStyle = "purple"
+                ctx.lineWidth = 5
+                ctx.arc(50 + player1_X, 50 + player1_Y, 50, 0, Math.PI * 2)
+                ctx.fill()
+                ctx.stroke()
+
+                //Draw Player 2's circle with a blue interior and red outline
+                ctx.beginPath();
+                ctx.fillStyle = "blue"
+                ctx.strokeStyle = "red"
+                ctx.lineWidth = 5
+                ctx.arc(50 + player2_X, 50 + player2_Y, 50, 0, Math.PI * 2)
+                ctx.fill()
+                ctx.stroke()
+
+
+                ctx.fillStyle = "black"
+                ctx.font = "30px Times"
+                ctx.fillText("Score: " + score, 10, 30)
+                ctx.fillText("Use the arrow keys to move the green circle.", 10, 60)
+                ctx.fillText("Use WASD to move the blue circle.", 10, 90)
+                ctx.fillText("You win the game if you fully overlap the two circles.", 10, 120)
+            }
+            else {
+                ctx.fillStyle = "black"
+                ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+                ctx.fillStyle = "gold"
+                ctx.font = "100px Comic Sans MS"
+                ctx.fillText("You Win!!!!!!", 200, 200)
+            }
+        }
+
+        /* Event handling */
+        /* If a key goes down, add it to the list of keys that are down if the key is not already down */
+        function keydown(e) {
+            if (!keysDown.includes(e.code))
+                keysDown.push(e.code)
+                console.log(e.code)
+        }
+
+        /* If a key goes up, remove it from our list of keys that are down */
+        function keyup(e) {
+            let index = keysDown.indexOf(e.code)
+            keysDown.splice(index, 1)
+        }
+
+        /* Setup up the basics of drawing and event handling in our game. */
+        function setup() {
+            document.addEventListener("keydown", keydown)
+            document.addEventListener("keyup", keyup)
+
+            let canvas = document.querySelector("#canv")
+            let ctx = canvas.getContext("2d")
+
+            //Make the canvas the same size as our window
+            //so it is "full screen"
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
+        }
+
+        setup()
+
+        //In the background, call the gameLoop every 50ms.
+        let ms = 20;
+        let fps = 1000 / ms;
+        setInterval(gameLoop, ms)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>A Game Loop-Based Game</title>
+
+    <!-- Let the canvas fill the whole browser window -->
+    <style>
+        * {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canv">
+    </canvas>
+
+    <script>
+        //The "model" of our game
+        let player_X = 50
+        let player_Y = 350
+
+        //The randomly generated point for enemies
+        let enemey_X = 750
+        let enemey_Y = Math.floor(Math.random() * 500) + 75
+
+        //The x cordinate offset of the laser 
+        let laser_X = player_X + 75
+
+        let score = 0
+
+        //Variable to see if the laser if firing
+        let spawnlaser = false;
+
+        //The state of the input
+        let keysDown = []
+
+        //The speed of the character
+        let speed = 100
+
+        let timer = 1000
+
+        //Keeps track of if the game has ended
+        let outOfTime = false
+
+        /**
+         * The game loop.
+         * The game loop calls update and draw using a timer
+         */
+        function gameLoop() {
+            update()
+            draw()
+        }
+
+        /**
+         * Update the model.
+         * Note that this function *only*
+         * changes the model. No drawing happens
+         */
+        function update() {
+            if(!outOfTime){
+                /*The Players Movement*/
+                if (keysDown.includes("ArrowUp"))
+                    player_Y -= speed / fps
+                if (keysDown.includes("ArrowDown"))
+                    player_Y += speed / fps
+                
+                if (keysDown.includes("Space"))
+                    spawnlaser = true
+                else
+                    spawnlaser = false
+
+
+                /*First takes the difference between the player and enemey Y Cordinates
+                * Ensures that value is positive by using Math.abs()
+                * If the difference between the Y values is less than 5, then the laser hits the enemey*/
+                if (Math.abs(player_Y - enemey_Y) < 5) {
+                    score += 500
+                    enemey_Y = Math.floor(Math.random() * 500) + 75
+                }
+
+                if (timer < 0)
+                    outOfTime = true
+                else
+                    outOfTime = false
+                    timer--
+            }
+        }
+
+        /**
+         * Draw the model.
+         * Note that we only *read* the model, we never change it
+         * This allows of separation of concerns
+         */
+        function draw() {
+            //Get the canvas element and its context
+            let canvas = document.querySelector("#canv")
+            let ctx = canvas.getContext("2d")
+
+            if(!outOfTime){
+                //Clear the canvas with a light gray background
+                ctx.fillStyle = "lightgray"
+                ctx.beginPath()
+                ctx.rect(0, 0, canvas.width, canvas.height)
+                ctx.fill()
+
+                //Draw Player circle with a green interior and purple outline
+                ctx.beginPath();
+                ctx.fillStyle = "green"                                     
+                ctx.strokeStyle = "purple"
+                ctx.lineWidth = 5
+                ctx.arc(50 + player_X, 50 + player_Y, 50, 0, Math.PI * 2)
+                ctx.fill()
+                ctx.stroke()           
+                
+                //Draw a small circle target
+                ctx.beginPath();
+                ctx.fillStyle = "blue"                                     
+                ctx.arc(enemey_X, enemey_Y, 10, 0, Math.PI * 2)
+                ctx.fill()
+
+                //The text
+                ctx.fillStyle = "black"
+                ctx.font = "30px Times"
+                ctx.fillText("Score: " + score + "    Timer: " + timer, 10, 30)
+                ctx.fillText("Use the up and down arrow keys to move.", 10, 60)
+                ctx.fillText("Use spacebar to shoot laser.", 10, 90)
+
+                //Spawns the laser if the spacebar is pressed
+                if(spawnlaser){
+                    ctx.beginPath();
+                    ctx.fillStyle = "red"   
+                    ctx.rect(laser_X, player_Y, 1000, 10)
+                    ctx.fill()
+
+                }
+            }
+            //True if your time has ran out
+            if(outOfTime) {
+                //Clears the screen to have a black background
+                ctx.beginPath()
+                ctx.fillStyle = "black"
+                ctx.rect(0, 0, canvas.width, canvas.height)
+                ctx.fill()
+
+                //Text displaying score
+                ctx.fillStyle = "white"
+                ctx.font = "80px Times"
+                ctx.fillText("Score: " + score, 100, 100)
+            }
+
+        }
+
+        /* Event handling */
+        /* If a key goes down, add it to the list of keys that are down if the key is not already down */
+        function keydown(e) {
+            if (!keysDown.includes(e.code))
+                keysDown.push(e.code)
+                console.log(e.code)
+        }
+
+        /* If a key goes up, remove it from our list of keys that are down */
+        function keyup(e) {
+            let index = keysDown.indexOf(e.code)
+            keysDown.splice(index, 1)
+        }
+
+        /* Setup up the basics of drawing and event handling in our game. */
+        function setup() {
+            document.addEventListener("keydown", keydown)
+            document.addEventListener("keyup", keyup)
+
+            let canvas = document.querySelector("#canv")
+            let ctx = canvas.getContext("2d")
+
+            //Make the canvas the same size as our window
+            //so it is "full screen"
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
+        }
+
+        setup()
+
+        //In the background, call the gameLoop every 50ms.
+        let ms = 20;
+        let fps = 1000 / ms;
+        setInterval(gameLoop, ms)
+    </script>
+</body>
+
+</html>
