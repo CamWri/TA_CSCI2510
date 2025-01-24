@@ -3,7 +3,6 @@
 
 <head>
     <title>A Game Loop-Based Game</title>
-
     <!-- Let the canvas fill the whole browser window -->
     <style>
         * {
@@ -30,7 +29,7 @@
         //Keeps track if the mouse is currently clicked
         let mouseDown = false;
 
-        //Keeps track if the mouse was up or down this frame
+        //Keeps track if the mouse was up or down in the current frame
         let mouseUpThisFrame = false;
         let mouseDownThisFrame = false;
 
@@ -50,8 +49,12 @@
          * changes the model. No drawing happens
          */
         function update() {
-            if (mouseUpThisFrame){
-                mouseUpThisFrame = false
+            //Checks if this mouse was clicked this frame
+            if (mouseDownThisFrame){
+                //Resets the mouseDownThisFrame to look for the next click
+                mouseDownThisFrame = false
+                
+                //Restrict scorable places to only be in the square when being clicked
                 if( mousePosition.x > 200 && mousePosition.x < 500 && mousePosition.y > 400 && mousePosition.y < 500){
                     score++
                 }
@@ -84,7 +87,7 @@
             ctx.font = "80px Times"
             ctx.fillText("Score: " + score, 100, 175)
 
-
+            //The clickable box for scores
             ctx.beginPath();
             ctx.fillStyle = "blue"   
             ctx.strokeStyle = "black"
@@ -108,7 +111,8 @@
             keysDown.splice(index, 1)
         }
 
-        /*Keeps track of the mouse movements and prints the current cordinates to the console*/
+        /*Keeps track of the mouse movement by constantly listening for mouse movement
+        prints the current cordinates to the console*/
         function mousemove(e) {
             mousePosition.x = e.clientX;
             mousePosition.y = e.clientY;
@@ -118,20 +122,25 @@
 
         }
 
-        /*Keeps track if the mouse was up this frame as well as the mouse not being down currently down*/
+        /*Keeps track if the mouse was up this frame as well as the mouse not being down currently down
+        by listening for if the mouse was released*/
         function mouseup(e){
             mouseUpThisFrame = true;
             mouseDown = false;
 
+
             console.log("Mouse Up")
+            console.log("mouseUpThisFrame:" + mouseUpThisFrame)
         }
 
-        /*Keeps track if the mouse was down this frame as well as the mouse not being up currently down*/
+        /*Keeps track if the mouse was down this frame as well as the mouse not being up currently down
+        by listening for if the mouse was pressed downwards*/
         function mousedown(e){
             mouseDownThisFrame = true;
             mouseDown = true
 
             console.log("Mouse Down")
+            console.log("mouseDownThisFrame:" + mouseDownThisFrame)
         }
 
 
@@ -140,6 +149,7 @@
             document.addEventListener("keydown", keydown)
             document.addEventListener("keyup", keyup)
 
+            //Just like the keyup and keydown, this is registering
             document.addEventListener("mousemove", mousemove)
             document.addEventListener("mouseup", mouseup)
             document.addEventListener("mousedown", mousedown)

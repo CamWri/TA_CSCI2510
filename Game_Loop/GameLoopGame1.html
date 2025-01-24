@@ -19,14 +19,19 @@
 
     <script>
         //The "model" of our game
+
+        //Player 1 Coordinates
         let player1_X = 50
         let player1_Y = 200
 
+        //Player 2 Coordinates
         let player2_X = 500
         let player2_Y = 200
 
 
         let score = 0
+
+        //Determines if the characters overlap
         let isOverlap = false;
 
         //The state of the input
@@ -70,7 +75,6 @@
                     player2_Y -= speed / fps
                 if (keysDown.includes("KeyS"))
                     player2_Y += speed / fps
-                
                 score++
 
 
@@ -139,6 +143,7 @@
 
         /* Event handling */
         /* If a key goes down, add it to the list of keys that are down if the key is not already down */
+        /* One thing you can do is press the key and look into your console to see the code the key goes by*/
         function keydown(e) {
             if (!keysDown.includes(e.code))
                 keysDown.push(e.code)

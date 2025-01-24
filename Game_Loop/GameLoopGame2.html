@@ -19,6 +19,8 @@
 
     <script>
         //The "model" of our game
+
+        //Player Cordinates
         let player_X = 50
         let player_Y = 350
 
@@ -81,10 +83,13 @@
                     enemey_Y = Math.floor(Math.random() * 500) + 75
                 }
 
+
+                /*If timer runs out, set the outofTime to positive
+                This means the outer if statement will never be true 
+                If there is still time, just keep subtracting one from the time per game frame*/
                 if (timer < 0)
                     outOfTime = true
                 else
-                    outOfTime = false
                     timer--
             }
         }
@@ -134,9 +139,9 @@
                     ctx.fillStyle = "red"   
                     ctx.rect(laser_X, player_Y, 1000, 10)
                     ctx.fill()
-
                 }
             }
+            
             //True if your time has ran out
             if(outOfTime) {
                 //Clears the screen to have a black background
