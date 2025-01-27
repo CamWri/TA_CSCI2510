@@ -2,7 +2,7 @@ The repo contains several examples of simple games that use a basic game loop.<b
 
 GameLoopGame0.html explores the basics of movement and switching scenes in a game loop format. This is done by going between the playable state and the end of game state. <br>
 Concepts: <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Movement Restrictions (Cannot move the circle to the X cordinate of less than Zero) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Movement and Movement Restrictions (Cannot move the circle to the X cordinate of less than Zero) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Concepts of multiple scenes and transitioning between the scenes (This is critical to show differing scenes in a game) <br><br><br>
 
 
