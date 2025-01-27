@@ -24,3 +24,4 @@ GameLoopGame3.html explores the idea of mouse inputs to make a clicker game. <br
 Concepts:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Keeps track of mouse related variable like location and if the mouse was clicked in general and in this frame<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Contains the code infrastructure to allow to keep track of mouse movements and clicking functionality<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Mouse movement and clicking is tracked in javascript console
