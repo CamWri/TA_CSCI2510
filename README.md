@@ -6,7 +6,7 @@ Concepts: <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Concepts of multiple scenes and transitioning between the scenes (This is critical to show differing scenes in a game) <br><br><br>
 
 
-GameLoopGame1.html explores multiple character movements and a very basic idea of circle-circle collision. < br>
+GameLoopGame1.html explores multiple character movements and a very basic idea of circle-circle collision. <br>
 Concepts: <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Keeping track of multiple objects locations and their movement <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Very basic idea of circle-circle collision/overlap <br>
