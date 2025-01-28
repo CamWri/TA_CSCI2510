@@ -10,8 +10,8 @@ GameLoopGame1.html explores multiple character movements and a very basic idea o
 Concepts: <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Keeping track of multiple objects locations and their movement <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Very basic idea of circle-circle collision/overlap <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Keep track of their cordinates and see if the difference is less than some factor (in this game its 5) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Need a factor because movement causes instantces that may look perfectly overlap but is technically not<br><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Keep track of their cordinates and see if the difference is less than some factor (in this game its 5) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Need a factor because movement causes instantces that may look perfectly overlap but is technically not<br><br><br>
 
 
 GameLoopGame2.html explores the idea of firing an object to gain points as well the core idea of a time restriction by using a timer<br>
