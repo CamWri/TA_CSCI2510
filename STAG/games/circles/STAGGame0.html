@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>A Simple Game</title>
+    <style>
+        * {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canv">
+    </canvas>
+
+
+    <!-- Engine imports -->
+    <!-- The engine itself -->
+    <script src="/STAG/engine/Engine.js"></script>
+
+    <!-- The static classes from the engine -->
+    <script src="/STAG/engine/static/Time.js"></script>
+    <script src="/STAG/engine/static/Globals.js"></script>
+    <script src="/STAG/engine/static/Input.js"></script>
+
+    <!-- The STAG classes -->
+    <script src="/STAG/engine/classes/Scene.js"></script>
+    <script src="/STAG/engine/classes/GameObject.js"></script>
+    <script src="/STAG/engine/classes/Component.js"></script>
+
+    <!-- The generic components in the engine -->
+    <script src="/STAG/engine/components/Transform.js"></script>
+    <script src="/STAG/engine/components/Circle.js"></script>
+    <script src="/STAG/engine/components/Text.js"></script>
+    <script src="/STAG/engine/components/KeyboardMovement.js"></script>
+
+
+    <!-- Game imports -->
+    <!-- The components for our game -->
+    <script src="./components/DeathTestComponent.js"></script>
+    <script src="./components/DeathSceneControllerComponent.js"></script>
+    <script src="./components/MainSceneControllerComponent.js"></script>
+
+    <!-- The game objects for our game -->
+    <script src="./game-objects/ScoreTextGameObject.js"></script>
+    <script src="./game-objects/CircleGameObject.js"></script>
+    <script src="./game-objects/DeathTextGameObject.js"></script>
+    <script src="./game-objects/DeathSceneControllerGameObject.js"></script>
+    <script src="./game-objects/EnemyGameObject.js"></script>
+    <script src="./game-objects/MainSceneControllerGameObject.js"></script>
+
+    <!-- The scenes for our game -->
+    <script src="./scenes/MainScene.js"></script>
+    <script src="./scenes/DeathScene.js"></script>
+
+    <script>
+        //Run the game
+        let currentScene = new MainScene();
+        Engine.setup()
+    </script>
+</body>
+
+</html>
