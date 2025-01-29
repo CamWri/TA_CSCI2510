@@ -24,6 +24,10 @@ class Engine {
     document.addEventListener("keydown", Input.keydown)
     document.addEventListener("keyup", Input.keyup)
 
+    document.addEventListener("mousemove", Input.mousemove)
+    document.addEventListener("mouseup", Input.mouseup)
+    document.addEventListener("mousedown", Input.mousedown)
+
     //In the background, create a thread and call
     //gameLoop every 100ms.
     setInterval(Engine.gameLoop, Time.ms)
