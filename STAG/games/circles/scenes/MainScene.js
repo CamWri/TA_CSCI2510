@@ -8,13 +8,13 @@ class MainScene extends Scene {
 
     /** The game objects in the world */
     let circleGameObject = new CircleGameObject()
-    circleGameObject.transform.x = 50
-    circleGameObject.transform.y = 50
+    circleGameObject.transform.x = 150
+    circleGameObject.transform.y = 150
     this.gameObjects.push(circleGameObject)
 
     let enemyGameObject = new EnemyGameObject()
-    enemyGameObject.transform.x = 200
-    enemyGameObject.transform.y = 50
+    enemyGameObject.transform.x = 300
+    enemyGameObject.transform.y = 150
     this.gameObjects.push(enemyGameObject);
 
     /** The screen-space text */
