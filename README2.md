@@ -31,6 +31,7 @@ In these files, you store game specific aspects like scenes, game objects, compo
 
 ### Main Files
 The main files is the centralized area to import and establishing engine and game js files. 
+
 **NOTE**: The imports in the main file maybe different per system due to file structures. Ensure your file structure matches your imports.
 
 ### Game Snippet Examples
