@@ -30,7 +30,7 @@ Engine.js is used as seperate file to establish the game loop of update and draw
 In these files, you store game specific aspects like scenes, game objects, components, and the main files(in this it will be called STAGGame#.html)
 
 ### Main Files
-The main files is the centralized area to import and establishing engine and game js files.
+The main files is the centralized area to import and establishing engine and game js files. 
 **NOTE**: The imports in the main file maybe different per system due to file structures. Ensure your file structure matches your imports.
 
 ### Game Snippet Examples
