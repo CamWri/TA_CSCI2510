@@ -1,51 +1,25 @@
-The repo contains several examples of common game snippets by using the STAG game engine. The first thing to note is the file structure of a STAG game engine. In this architecture, you should have 2 main folders, one for the game and one for the individual games.
+The repo contains several examples of game concepts that use a basic game loop. Each header links to the respective code.
 
+## [GameLoopGame0.html](https://github.com/CS2510/Game-Loop-Minimum-Example/blob/main/GameLoopGame0.html)  
+Explores the basics of movement and switching scenes in a game loop format.  
+- Movement and Movement Restrictions (Cannot move the circle to the X coordinate of less than Zero)
+- Concepts of multiple scenes and transitioning between the scenes (This is critical to show differing scenes in a game)
 
-# Engine
-The game engine is split up into 4 categories: classes, components, static, and the engine itself. 
+## [GameLoopGame1.html](https://github.com/CS2510/Game-Loop-Minimum-Example/blob/main/GameLoopGame1.html)  
+Explores multiple character movements and a very basic idea of circle-circle collision.  
+- Keeping track of multiple object's locations and their movement
+- A temporary idea of circle-circle collision/overlap
+  - Keep track of their coordinates and see if the difference is less than some factor (in this game it's 5)
+  - Need a factor because movement causes instances that may look perfectly overlap but are technically not
 
-### Classes
-Classes in the game engine are the building bricks that make up the game.
+## [GameLoopGame2.html](https://github.com/CS2510/Game-Loop-Minimum-Example/blob/main/GameLoopGame2.html)  
+Explores the idea of firing an object to gain points as a time restriction by using a timer.  
+- User input to create, display, and not display objects depending on the user input
+- Countdown timer to show when the game ends
+- A temporary idea of circle-rectangle collision based on the coordinates
 
-- Scenes : encompouse everything in regards to the current game objects being displayed or in use and the background
-- Game Objects : entities in a game that represent something, and the things that need to be tracked and displayed
-- Components : puzzles pieces that give unqiue behaviors, aspects, and functionality to game objects
-
-### Components
-Components in the game engine are universal game object components that can be used between different games. 
-
-Examples
-- Aspects that need to be drawn like circles, rectangles, lines and text
-- The x and y corrdinates of each object 
-
-### Static
-- Globals : variables to be stored between scenes
-- Input : handles all the logic to track and record mouse and keyboard inputs
-- Time :  keeps track of the ms you want to run and your fps. 
-
-### Engine
-Engine.js is used as seperate file to establish the game loop of update and draw and the setUp functions wich establishes the infrastructure.
-
-# Games
-In these files, you store game specific aspects like scenes, game objects, components, and the main files(in this it will be called STAGGame#.html)
-
-### Main Files
-The main files is the centralized area to import and establishing engine and game js files. 
-
-**NOTE**: The imports in the main file maybe different per system due to file structures. Ensure your file structure matches your imports.
-
-### Game Snippet Examples
-- Button Game
-    - Explores the idea of button interactions
-- Circles
-    - Circle-Circle collision and resolution
-    - Keeping track of Score as a global variable
-    - Displaying Score across multiple scenese
-- Enemy Movement
-    - Show the logic behind a preestablished path for an enemey movement
-    - Show the logic behind a "roaming" enemey when given specific cordinates
-- Mouse Movement
-    - Shows the logic behind a game object following the mouse at all times
-    - Shows the logic behind a point-and-click movement schematic
-
-
+## [GameLoopGame3.html](https://github.com/CS2510/Game-Loop-Minimum-Example/blob/main/GameLoopGame3.html)  
+Explores the idea of mouse inputs to make a clicker game.  
+- Keeps track of mouse-related variables like location and if the mouse was clicked in general and in this frame
+- Contains the code infrastructure to allow to keep track of mouse movements and clicking functionality
+- Mouse movement and clicking are printed in the javascript console for user assistance and understanding
