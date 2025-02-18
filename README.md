@@ -47,6 +47,7 @@ The main files is the centralized area to import and establishing engine and gam
 - Mouse Movement
     - Shows the logic behind a game object following the mouse at all times
     - Shows the logic behind a point-and-click movement schematic
+    - To change the behavior, go to the player game object and switch the component that is added
 - Shooting
     - Shows the logic behind the idea of an object "creating" an object
     - A player object firing a ball game object
