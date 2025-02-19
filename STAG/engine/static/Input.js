@@ -21,6 +21,7 @@ class Input {
 
     /** Respond to key down events */
     static keydown(e) {
+        console.log(e)
         if (!Input.keysDown.includes(e.code))
             Input.keysDown.push(e.code)
     }

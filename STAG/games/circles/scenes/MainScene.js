@@ -19,5 +19,7 @@ class MainScene extends Scene {
 
     /** The screen-space text */
     this.gameObjects.push(new ScoreTextGameObject())
+
+    this.gameObjects.push(new InstructionsTextGameObject())
   }
 }

@@ -7,5 +7,7 @@ class MainScene extends Scene {
       playerGameObject.transform.y = 200
 
       this.gameObjects.push(playerGameObject)
+
+      this.gameObjects.push(new TextGameObject())
     }
 }

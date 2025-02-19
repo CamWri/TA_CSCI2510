@@ -1,11 +1,14 @@
 class PlayerGameObject extends GameObject{
     constructor(){
         super()
-        this.addComponent(new Circle())
+        this.addComponent(new Circle()) 
 
-        /*EITHER do Position Locking Movement or Point-and-Click Movement*/
+        this.shouldFollow = false
 
-        this.addComponent(new PositionLockingMovement())   
-        //this.addComponent(new PointAndClickMovement())     
+        if (this.shouldFollow){
+            this.addComponent(new PositionLockingMovement()) 
+        } else{
+            this.addComponent(new PointAndClickMovement())
+        }
     }
 }

@@ -8,5 +8,7 @@ class MainScene extends Scene {
 
       this.gameObjects.push(playerGameObject)
       console.log(this)
+
+      this.gameObjects.push(new TextGameObject())
     }
 }

@@ -11,5 +11,8 @@ class MainScene extends Scene {
     //Adds the button game object to the list of current game objects in the scene
     //This allows the game object to be updated
     this.gameObjects.push(buttomGameObject)
+
+    this.gameObjects.push(new InstructionsTextGameObject())
+
   }
 }
